@@ -54,13 +54,13 @@ function page1Render() {
   page1Top.innerHTML = "Hi Friend :)<br>Are you stuck?";
 
   var page1ButtonDiv = renderDiv(null,'id','yesButtonDiv');
-  var yesButton = renderButton("Nah, I'm good :)",'class','mainButtonCentered page1');
+  var yesButton = renderButton("YES!",'class','mainButtonCentered page1');
   yesButton.setAttribute('id','yesButton');
-  yesButton.addEventListener('click',page2Render);
+  yesButton.addEventListener('click',page3Render);
 
-  var noButton = renderButton("YES!",'class','mainButtonCentered page1');
+  var noButton = renderButton("Nah, I'm good :)",'class','mainButtonCentered page1');
   noButton.setAttribute('id','noButton');
-  noButton.addEventListener('click',page4Render);
+  noButton.addEventListener('click',page2Render);
 
   document.getElementById('div6').appendChild(yesButton);
   document.getElementById('div6').appendChild(noButton);
@@ -109,6 +109,7 @@ function page3Render() {
   submitButton.setAttribute('type','submit');
   submitButton.setAttribute('value','Submit!');
   submitButton.setAttribute('id','submitButton');
+  submitButton.addEventListener('click',page4Render);
 
   slackForm.appendChild(userName1Box);
   slackForm.appendChild(userName2Box);
