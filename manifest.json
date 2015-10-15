@@ -1,13 +1,21 @@
 {
-    "name": "test",
+    "name": "Stuck?",
     "version": "0.1",
-    "description": "xxxxxxxx",
-  "manifest_version": 2
-    },
+    "description": "xxxx",
     "permissions": [
         "tabs",
-        "http://*/*",
+        "https://ajax.googleapis.com/",
         "https://*/*"
     ],
-    "manifest_version": 2
+    "content_scripts":[
+      {
+        "matches": ["http://jquery.com/*"],
+        "js": ["jquery-2.1.4.min.js", "ChromeExt.js"]
+      }
+    ],
+    "manifest_version": 2,
+    "browser_action": {
+      "default_icon" : "Codesmith-Resized.png",
+      "default_popup" : "chromeExt.html"
+    }
 }
