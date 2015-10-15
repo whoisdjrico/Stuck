@@ -1,0 +1,130 @@
+.body {
+  width: 500px;
+  height: 500px;
+  position: absolute;
+}
+
+#div1 {
+  float: left;
+  width: 75px;
+  height: 500px;
+  background-color:#0ABBFF;
+}
+
+#div2 {
+  float: left;
+  width: 350px;
+  height: 500px;
+  background-color:#0ABBFF;
+  color: white;
+  font-size: 40px;
+  text-align: center;
+}
+
+#div3 {
+  float: left;
+  width: 75px;
+  height: 500px;
+  background-color:#0ABBFF;
+}
+
+#div4 {
+  margin-top: 45px;
+  width: 350px;
+  height: 100px;
+  background-color:green;
+  text-align: center;
+  font-size: 40px;
+  color: white;
+  background-color: #0ABBFF;
+}
+
+
+#div5 {
+  width: 350px;
+  height: 100px;
+  background-color:#0ABBFF;
+}
+
+#div6 {
+  width: 350px;
+  height: 200px;
+  background-color:#0ABBFF;
+  position: absolute;
+  top: 300px;
+}
+
+#div7 {
+  width: 350px;
+  height: 100px;
+  background-color:#0ABBFF;
+}
+
+#messageBox {
+  width: 300px;
+  height: 100px;
+}
+
+
+#floatTest {
+  width: 300px;
+  background-color:blue;
+}
+
+#help2 {
+  text-align: center;
+  font-size: 25px;
+  color: white;
+  position: absolute;
+  top: 185;
+  left: 65;
+}
+
+#userName1Box {
+  float:left;
+  width: 125px;
+  position: absolute;
+  top: 120px;
+  right: 195px;
+}
+
+#userName2Box {
+  float:left;
+  width: 125px;
+  position: absolute;
+  top: 120px;
+  right: 30px;
+
+}
+
+#submitButton {
+  position: absolute;
+  top: 150px;
+  width: 100px;
+  right: 125px;
+}
+
+
+.mainButtonCentered
+{
+  margin: 0 auto;
+  width: 250px;
+  height: 75px;
+  margin-top: 10px;
+  border-radius: 3px;
+  position: absolute;
+  font-size: 25px;
+}
+
+#yesButton {
+  top: 80;
+  right: 50;
+  background-color: #FF8500;
+
+}
+
+#noButton {
+  right: 50;
+  /*left: 125;*/
+  background-color: #76D9FF;
+}
