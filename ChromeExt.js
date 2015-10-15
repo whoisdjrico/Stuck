@@ -1,26 +1,18 @@
+//CHROME STUFF THAT GOT COMMENTED OUT
 
+// var opt = {
+//    type: "basic",
+//    title: "Deploy",
+//    message: "It worked!",
+//    iconUrl: "Codesmith-Resized.png"
+// };
+// chrome.notifications.create("", opt, function(id) {
+//    console.error(chrome.runtime.lastError);
+// });
 
-var opt = {
-   type: "basic",
-   title: "Deploy",
-   message: "It worked!",
-   iconUrl: "Codesmith-Resized.png"
-};
-chrome.notifications.create("", opt, function(id) {
-   console.error(chrome.runtime.lastError);
-});
+///////////////////////////////
+
 // curl -X POST --data-urlencode 'payload={"channel": "#finance", "username": "webhookbot", "text": "This is posted to #finance and comes from a bot named webhookbot.", "icon_emoji": ":ghost:"}' https://hooks.slack.com/services/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
-var payload = {};
-
-var channelName = '#finance';
-var userName = 'helpbot';
-var messageText;
-
-var userName1 = null;
-var userName2 = null;
-
-payload.channel = channelName;
-payload.username = userName;
 
 // var newName = 'John Smith',
 //     xhr = new XMLHttpRequest();
@@ -37,6 +29,9 @@ payload.username = userName;
 //     }
 // };
 // xhr.send(encodeURI('name=' + newName));
+
+var userName1;
+var userName2;
 
 page1Render();
 
@@ -101,7 +96,7 @@ function page3Render() {
   messageBox.setAttribute('columns','50');
   messageBox.setAttribute('name','messageBox');
   messageBox.setAttribute('id','messageBox');
-  messageBox.innerHTML = "TYPE YOUR MESSAGE HERE!";
+  messageBox.innerHTML = "TYPE YOUR MESSAGE HERE!"
   form.appendChild(messageBox);
 
   var userName1Box = document.createElement('input');
@@ -117,33 +112,31 @@ function page3Render() {
   userName2Box.innerHTML = "User Name 2";
 
   var submitButton = document.createElement('input');
-  submitButton.setAttribute('type','submit');
+  submitButton.setAttribute('type','button');
   submitButton.setAttribute('value','Submit!');
   submitButton.setAttribute('id','submitButton');
-  submitButton.addEventListener('click',page4Render);
+
+  var message = messageBox.value;
+  var user1 = userName1Box.value;
+  var user2 = userName2Box.value;
 
   slackForm.appendChild(userName1Box);
   slackForm.appendChild(userName2Box);
   slackForm.appendChild(submitButton);
 
+  submitButton.addEventListener('click',function(event){
+    event.preventDefault();
+    sendToSlack(message,user1,user2);
+  });
+  // submitButton.addEventListener('onClick',showIndex);
 
-//this opens new tab after yes is click in needing help
-  submitButton.addEventListener("click", showIndex);
-
-
-  function showIndex() {
-       var index_url = "http://www.eyebleach.me/kittens/";
-       setTimeout(
-       chrome.tabs.create({
-       url: index_url
-    }),3000);
- }
 
 
 }
 
-function page4Render() {
+function page4Render(message,user1,user2) {
   clearDivs();
+  showIndex();
 
   document.getElementById('div4').innerHTML = 'Help is on the way!';
 
@@ -151,6 +144,38 @@ function page4Render() {
   help2.setAttribute('id','help2');
 
   document.getElementById('div5').appendChild(help2);
+
+
+}
+
+function sendToSlack(message,user1,user2) {
+  var payload = {};
+
+  // var channelName = '#finance';
+  // var userName = 'helpbot';
+  var messageText = message
+
+  userName1 = user1;
+  userName2 = user2;
+
+  messageText = messageText + " cc: " + user1 + " " + user2;
+
+  // payload.channel = channelName;
+  // payload.username = userName;
+  payload.text = messageText;
+
+  console.log('message: ' + message);
+  console.log('user1: ' + user1);
+  console.log('user2: ' + user1);
+
+  jQuery.ajax({
+    url: 'https://hooks.slack.com/services/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',
+    type: 'POST',
+    data: JSON.stringify(payload),
+    contentType: 'application/json; charset=UTF-8',
+    dataType: 'json',
+    success: page4Render
+  });
 }
 
 function removeElementsByClass(className){
@@ -167,3 +192,14 @@ function clearDivs () {
     removeElementsByClass(thingToDelete);
   }
 }
+
+
+//this opens new tab after yes is click in needing help
+
+function showIndex() {
+       var index_url = "http://www.eyebleach.me/kittens/";
+       setTimeout(
+       chrome.tabs.create({
+       url: index_url
+    }),3000);
+ }
