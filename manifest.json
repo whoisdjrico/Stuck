@@ -5,7 +5,8 @@
     "permissions": [
         "tabs",
         "https://ajax.googleapis.com/",
-        "https://*/*"
+        "http://google.com/",
+        "http://www.eyebleach.me/kittens/"
     ],
     "content_scripts":[
       {
