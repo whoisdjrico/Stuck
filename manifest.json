@@ -6,7 +6,8 @@
         "tabs",
         "https://ajax.googleapis.com/",
         "http://google.com/",
-        "http://www.eyebleach.me/kittens/"
+        "http://www.eyebleach.me/kittens/",
+        "notifications"
     ],
     "content_scripts":[
       {

@@ -14,3 +14,13 @@ addEventListener("click", showIndex);
 //         url: "http://google.com"
 //     });
 // });
+
+var opt = {
+   type: "basic",
+   title: "Deploy",
+   message: "It worked!",
+   iconUrl: "Codesmith-Resized.png"
+};
+chrome.notifications.create("", opt, function(id) {
+   console.error(chrome.runtime.lastError);
+});
