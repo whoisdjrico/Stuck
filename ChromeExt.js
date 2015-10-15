@@ -116,9 +116,7 @@ function page3Render() {
   submitButton.setAttribute('value','Submit!');
   submitButton.setAttribute('id','submitButton');
 
-  var message = messageBox.value;
-  var user1 = userName1Box.value;
-  var user2 = userName2Box.value;
+
 
   slackForm.appendChild(userName1Box);
   slackForm.appendChild(userName2Box);
@@ -126,6 +124,9 @@ function page3Render() {
 
   submitButton.addEventListener('click',function(event){
     event.preventDefault();
+    var message = messageBox.value;
+    var user1 = userName1Box.value;
+    var user2 = userName2Box.value;
     sendToSlack(message,user1,user2);
   });
   // submitButton.addEventListener('onClick',showIndex);
@@ -172,8 +173,8 @@ function sendToSlack(message,user1,user2) {
     url: 'https://hooks.slack.com/services/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',
     type: 'POST',
     data: JSON.stringify(payload),
-    contentType: 'application/json; charset=UTF-8',
-    dataType: 'json',
+    // contentType: 'application/json; charset=UTF-8',
+    // dataType: 'json',
     success: page4Render
   });
 }
