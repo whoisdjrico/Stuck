@@ -58,10 +58,48 @@ function page2Render() {
 function page3Render() {
   clearDivs();
   document.getElementById('div4').innerHTML = 'Jah feel :/';
-  document.getElementById('div5').innerHTML = "Don't panic, we got you :)<br><br>Just go ahead and type what's wrong in the box and if you're not " +userName1 + " & " + userName2 + " then type your Slack usernames in the boxes below (please include the @sign!)";
+  document.getElementById('div5').innerHTML = "Don't panic, we got you :)<br><br>Just go ahead and type what's wrong in the big box and if you're not " +userName1 + " & " + userName2 + " then type your Slack usernames in the boxes below (please include the @sign!)";
   document.getElementById('div5').style.fontSize = "16px";
   document.getElementById('div5').style.textAlign = 'left';
   document.getElementById('div5').style.fontFamily = 'sans-serif';
+
+  var form = document.createElement('form');
+  form.setAttribute('class','page3');
+  form.setAttribute('id','slackForm');
+  document.getElementById('div6').appendChild(form);
+
+  var messageBox = document.createElement('textarea');
+  messageBox.setAttribute('form','slackForm');
+  messageBox.setAttribute('rows','5');
+  messageBox.setAttribute('columns','50');
+  messageBox.setAttribute('name','messageBox');
+  messageBox.setAttribute('id','messageBox');
+  messageBox.innerHTML = "TYPE YOUR MESSAGE HERE!"
+  form.appendChild(messageBox);
+
+  var userName1Box = document.createElement('input');
+  var userName2Box = document.createElement('input');
+  userName1Box.setAttribute('type','text');
+  userName1Box.setAttribute('id','userName1Box');
+  userName1Box.setAttribute('name','userName1Box');
+  userName1Box.innerHTML = "User Name 1";
+
+  userName2Box.setAttribute('id','userName2Box');
+  userName2Box.setAttribute('name','userName2Box');
+  userName2Box.setAttribute('type','text');
+  userName2Box.innerHTML = "User Name 2";
+
+  var submitButton = document.createElement('input');
+  submitButton.setAttribute('type','submit');
+  submitButton.setAttribute('value','Submit!');
+  submitButton.setAttribute('id','submitButton');
+
+  slackForm.appendChild(userName1Box);
+  slackForm.appendChild(userName2Box);
+  slackForm.appendChild(submitButton);
+
+
+
 }
 
 function page4Render() {
