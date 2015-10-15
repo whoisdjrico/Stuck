@@ -120,12 +120,17 @@ function page3Render() {
   var user1 = userName1Box.value;
   var user2 = userName2Box.value;
 
-  submitButton.addEventListener('onClick',sendToSlack(message,user1,user2));
-  // submitButton.addEventListener('onClick',showIndex);
-
   slackForm.appendChild(userName1Box);
   slackForm.appendChild(userName2Box);
   slackForm.appendChild(submitButton);
+
+  submitButton.addEventListener('click',function(event){
+    event.preventDefault();
+    sendToSlack(message,user1,user2);
+  });
+  // submitButton.addEventListener('onClick',showIndex);
+
+
 
 }
 
@@ -163,11 +168,11 @@ function sendToSlack(message,user1,user2) {
   console.log('user1: ' + user1);
   console.log('user2: ' + user1);
 
-  $.ajax({
+  jQuery.ajax({
     url: 'https://hooks.slack.com/services/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',
     type: 'POST',
     data: JSON.stringify(payload),
-    contentType: 'application/JSON; charset=UTF-8',
+    contentType: 'application/json; charset=UTF-8',
     dataType: 'json',
     success: page4Render
   });
