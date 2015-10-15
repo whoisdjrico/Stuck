@@ -1,15 +1,5 @@
 // curl -X POST --data-urlencode 'payload={"channel": "#finance", "username": "webhookbot", "text": "This is posted to #finance and comes from a bot named webhookbot.", "icon_emoji": ":ghost:"}' https://hooks.slack.com/services/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
-var payload = {};
 
-var channelName = '#finance';
-var userName = 'helpbot';
-var messageText;
-
-var userName1 = null;
-var userName2 = null;
-
-payload.channel = channelName;
-payload.username = userName;
 
 // var newName = 'John Smith',
 //     xhr = new XMLHttpRequest();
@@ -26,6 +16,9 @@ payload.username = userName;
 //     }
 // };
 // xhr.send(encodeURI('name=' + newName));
+
+var userName1;
+var userName2;
 
 page1Render();
 
@@ -109,7 +102,15 @@ function page3Render() {
   submitButton.setAttribute('type','submit');
   submitButton.setAttribute('value','Submit!');
   submitButton.setAttribute('id','submitButton');
-  submitButton.addEventListener('click',page4Render);
+
+  var message = messageBox.value;
+  var user1 = userName1Box.value;
+  var user2 = userName2Box.value;
+
+  submitButton.addEventListener('click',function(event){
+    event.preventDefault();
+    page4Render(message,user1,user2);
+  });
 
   slackForm.appendChild(userName1Box);
   slackForm.appendChild(userName2Box);
@@ -119,7 +120,9 @@ function page3Render() {
 
 }
 
-function page4Render() {
+function page4Render(message,user1,user2) {
+
+  sendToSlack(message,user1,user2);
   clearDivs();
 
   document.getElementById('div4').innerHTML = 'Help is on the way!';
@@ -128,6 +131,26 @@ function page4Render() {
   help2.setAttribute('id','help2');
 
   document.getElementById('div5').appendChild(help2);
+
+
+}
+
+function sendToSlack(message,user1,user2) {
+  var payload = {};
+
+  var channelName = '#finance';
+  var userName = 'helpbot';
+  var messageText = message;
+
+  userName1 = user1;
+  userName2 = user2;
+
+  payload.channel = channelName;
+  payload.username = userName;
+
+  console.log('message: ' + message);
+  console.log('user1: ' + user1);
+  console.log('user2: ' + user1);
 }
 
 function removeElementsByClass(className){
