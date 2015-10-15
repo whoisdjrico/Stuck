@@ -11,7 +11,23 @@ var userName2 = null;
 payload.channel = channelName;
 payload.username = userName;
 
-page3Render();
+// var newName = 'John Smith',
+//     xhr = new XMLHttpRequest();
+
+// xhr.open('POST',
+// encodeURI('myservice/username?id=some-unique-id'));
+// xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+// xhr.onload = function() {
+//     if (xhr.status === 200 && xhr.responseText !== newName) {
+//         alert('Something went wrong.  Name is now ' + xhr.responseText);
+//     }
+//     else if (xhr.status !== 200) {
+//         alert('Request failed.  Returned status of ' + xhr.status);
+//     }
+// };
+// xhr.send(encodeURI('name=' + newName));
+
+page1Render();
 
 function renderDiv(string,attr,attrStr){
   var div = document.createElement('div');
@@ -47,7 +63,7 @@ function page1Render() {
   noButton.addEventListener('click',page4Render);
 
   document.getElementById('div6').appendChild(yesButton);
-  document.getElementById('div7').appendChild(noButton);
+  document.getElementById('div6').appendChild(noButton);
 }
 
 function page2Render() {
