@@ -61,7 +61,8 @@ function page1Render() {
 
 function page2Render() {
   clearDivs();
-  document.getElementById('div5').innerHTML = 'BOOM! <br> Glad to hear it :) <br> Keep going!';
+  document.getElementById('div5').innerHTML = 'BOOM!'
+  document.getElementById('div6').innerHTML = 'Glad to hear it :) <br> Keep going!';
 }
 
 function page3Render() {

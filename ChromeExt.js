@@ -1,34 +1,40 @@
 //CHROME STUFF THAT GOT COMMENTED OUT
+var extensionID = 'aiikpmbijdjainodfedhlclllcgmkdfd';
 
-// var opt = {
-//    type: "basic",
-//    title: "Deploy",
-//    message: "It worked!",
-//    iconUrl: "Codesmith-Resized.png"
-// };
-// chrome.notifications.create("", opt, function(id) {
-//    console.error(chrome.runtime.lastError);
-// });
+var myNotificationID = null;
 
-///////////////////////////////
+var opt = {
+   type: "basic",
+   title: "Stuck?",
+   message: "Hey Friend, are you stuck?",
+   iconUrl: "Codesmith-Resized.png",
+   buttons: [{
+            title: "YES!",
+        }, {
+            title: "Nah I'm good",
+        }]
+}
 
-// curl -X POST --data-urlencode 'payload={"channel": "#finance", "username": "webhookbot", "text": "This is posted to #finance and comes from a bot named webhookbot.", "icon_emoji": ":ghost:"}' https://hooks.slack.com/services/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
+function notify() {
+  chrome.notifications.create("", opt, function(id) {
+      myNotificationID = id;
+  });
 
-// var newName = 'John Smith',
-//     xhr = new XMLHttpRequest();
+  chrome.notifications.onButtonClicked.addListener(function(notifId, btnIdx) {
+      if (notifId === myNotificationID) {
+          if (btnIdx === 0) {
+              window.open("chromeExt.html");
+          }
+      }
+  });
+}
 
-// xhr.open('POST',
-// encodeURI('myservice/username?id=some-unique-id'));
-// xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-// xhr.onload = function() {
-//     if (xhr.status === 200 && xhr.responseText !== newName) {
-//         alert('Something went wrong.  Name is now ' + xhr.responseText);
-//     }
-//     else if (xhr.status !== 200) {
-//         alert('Request failed.  Returned status of ' + xhr.status);
-//     }
-// };
-// xhr.send(encodeURI('name=' + newName));
+var countDown = function() {
+  // setInterval(notify,1800000);
+  setInterval(notify,1800000);
+}
+
+onload = countDown();
 
 var userName1;
 var userName2;
@@ -57,7 +63,7 @@ function page1Render() {
 
   // var page1Top = renderDiv('Hi friend :) Are you stuck?','class','page1');
   var page1Top = document.getElementById('div4');
-  page1Top.innerHTML = "Hi Friend :)<br>Are you stuck?";
+  page1Top.innerHTML = "Stuck?";
 
   var page1ButtonDiv = renderDiv(null,'id','yesButtonDiv');
   var yesButton = renderButton("YES!",'class','mainButtonCentered page1');
@@ -74,13 +80,13 @@ function page1Render() {
 
 function page2Render() {
   clearDivs();
-  document.getElementById('div5').innerHTML = 'BOOM! <br> Glad to hear it :) <br> Keep going!';
+  document.getElementById('div5').innerHTML = 'BOOM! Keep coding!';
 }
 
 function page3Render() {
   clearDivs();
   document.getElementById('div4').innerHTML = 'Jah feel :/';
-  document.getElementById('div5').innerHTML = "Don't panic, we got you :)<br><br>Just go ahead and type what's wrong in the big box and if you're not " +userName1 + " & " + userName2 + " then type your Slack usernames in the boxes below (please include the @sign!)";
+  // document.getElementById('div5').innerHTML = "Don't panic, we got you :)<br><br>Just go ahead and type what's wrong in the big box and if you're not " +userName1 + " & " + userName2 + " then type your Slack usernames in the boxes below (please include the @sign!)";
   document.getElementById('div5').style.fontSize = "16px";
   document.getElementById('div5').style.textAlign = 'left';
   document.getElementById('div5').style.fontFamily = 'sans-serif';
@@ -137,7 +143,8 @@ function page3Render() {
 
 function page4Render(message,user1,user2) {
   clearDivs();
-  showIndex();
+  document.getElementById('div5').innerHTML = "";
+  setTimeout(showIndex,3700);
 
   document.getElementById('div4').innerHTML = 'Help is on the way!';
 
@@ -152,7 +159,7 @@ function page4Render(message,user1,user2) {
 function sendToSlack(message,user1,user2) {
   var payload = {};
 
-  // var channelName = '#finance';
+  var channelName = '#help-desk';
   // var userName = 'helpbot';
   var messageText = message
 
@@ -161,7 +168,7 @@ function sendToSlack(message,user1,user2) {
 
   messageText = messageText + " cc: " + user1 + " " + user2;
 
-  // payload.channel = channelName;
+  payload.channel = channelName;
   // payload.username = userName;
   payload.text = messageText;
 
@@ -196,11 +203,7 @@ function clearDivs () {
 
 
 //this opens new tab after yes is click in needing help
-
 function showIndex() {
-       var index_url = "http://www.eyebleach.me/kittens/";
-       setTimeout(
-       chrome.tabs.create({
-       url: index_url
-    }),3000);
- }
+var index_url = "http://www.eyebleach.me/kittens/";
+  chrome.tabs.create({url: index_url});
+}

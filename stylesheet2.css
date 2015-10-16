@@ -6,7 +6,7 @@ body {
 
 #div1 {
   float: left;
-  width: 15%;
+  width: 75px;
   height: 500px;
   background-color:#0ABBFF;
 }
@@ -31,37 +31,33 @@ body {
 #div4 {
   margin-top: 45px;
   width: 70%;
-  height: 20%;
+  height: 100px;
+  background-color:green;
   text-align: center;
   font-size: 40px;
   color: white;
   background-color: #0ABBFF;
-  position: absolute;
-  overflow: auto;
 }
 
 
 #div5 {
   width: 70%;
-  height: 20%;
+  height: 100px;
   background-color:#0ABBFF;
-  overflow: auto;
 }
 
 #div6 {
   width: 70%;
-  height: 40%;
+  height: 200px;
   background-color:#0ABBFF;
   position: absolute;
   top: 300px;
-  overflow: auto;
 }
 
 #div7 {
   width: 70%;
-  height: 20%;
+  height: 100px;
   background-color:#0ABBFF;
-  overflow: auto;
 }
 
 #messageBox {
@@ -85,7 +81,7 @@ body {
 }
 
 #userName1Box {
-  /*float:left;*/
+  float:left;
   width: 25%;
   position: absolute;
   top: 120px;
@@ -93,7 +89,7 @@ body {
 }
 
 #userName2Box {
-  /*float:left;*/
+  float:left;
   width: 25%;
   position: absolute;
   top: 120px;
@@ -102,11 +98,10 @@ body {
 }
 
 #submitButton {
-  position: relative;
-  top: 75%;
+  position: absolute;
+  top: 30%;
   width: 100px;
-  top: 20%
-  right: 50%;
+  right: 125px;
 }
 
 
@@ -123,13 +118,13 @@ body {
 
 #yesButton {
   top: 80;
-  right: 100;
+  right: 50;
   background-color: #FF8500;
 
 }
 
 #noButton {
-  right: 100;
+  right: 50;
   /*left: 125;*/
   background-color: #76D9FF;
 }
